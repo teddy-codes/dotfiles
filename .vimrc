@@ -7,7 +7,7 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
@@ -25,14 +25,12 @@ set laststatus=2 "For status line to properly work
 
 if has('mouse')
   set mouse=a
-endif
+endif 
 
-if !has('gui_running')
-  set t_Co=256
-  set t_ut=
-endif
+set t_Co=256
+set t_ut=
 
-colorscheme candid
+" colorscheme candid
 
 " Set tabs
 set tabstop=2
@@ -68,11 +66,11 @@ set splitbelow
 set splitright
 set hlsearch
 set foldlevel=99999
-set guifont=Fira\ Code:h16
-set background=dark
 set clipboard=unnamedplus
 set autowrite
 set noshowmode
+set backspace=indent,eol,start
+set synmaxcol=128
 
 let g:deoplete#enable_at_startup = 1
 
@@ -89,21 +87,8 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-let g:go_auto_sameids = 1
-let g:go_auto_type_info = 1
-let g:go_fmt_command = "goimports"
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
 
 call deoplete#custom#option('omni_patterns', { 'go': '[^. *\t]\.\w*' })
-
-let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
-
-
-set omnifunc=syntaxcomplete#Complete
 
 " Pane splitting
 nmap <silent> <c-k> :wincmd k<CR>
