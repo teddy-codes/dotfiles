@@ -11,6 +11,7 @@ export GOROOT="/usr/local/go"
 export PATH="$GOPATH/bin:$GOROOT/bin:$HOME/.local:$PATH"
 export TERM=xterm-256color
 export DEFAULT_USER=robert
+export EDITOR="vim"
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -40,6 +41,11 @@ alias vim="nvim"
 plugins=(
     git
 )
+
+function kt-go() {
+  export PROJECT_DIRECTORY=$1
+  kitty --session ~/.config/kitty/go.conf
+}
 
 source $ZSH/oh-my-zsh.sh
 

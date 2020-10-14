@@ -15,10 +15,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-
 let ayucolor="dark"
 
-colorscheme ayu
+" colorscheme ayu
 " colorscheme gruvbox
 noremap <C-n>t :tabnew<CR>
 noremap <C-v>sp :vsp<CR>
@@ -75,9 +74,7 @@ set backspace=indent,eol,start
 set synmaxcol=128
 
 let g:go_fmt_command = 'goimports'
-let g:go_def_mode = 'gopls'
 let g:go_auto_sameids = 1
-let g:go_info_mode = 'gopls'
 let g:go_auto_type_info = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_extra_types = 1
@@ -86,6 +83,26 @@ let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_updatetime = 400
+let g:go_auto_type_info = 1
+let g:go_auto_sameids = 1
+let g:go_info_mode = 'gopls'
+let g:go_def_mode = 'gopls'
+let g:go_referrers_mode = 'gopls'
+let g:go_def_mode = 'gopls'
+let g:go_rename_command = 'gopls'
+
 
 " deoplete
 let g:deoplete#enable_at_startup=1
