@@ -8,7 +8,6 @@ Plug 'neomake/neomake'
 Plug 'Raimondi/delimitMate'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
 Plug 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'ervandew/supertab'
 Plug 'sebdah/vim-delve'
 Plug 'tpope/vim-fugitive'
