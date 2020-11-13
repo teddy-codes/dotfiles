@@ -2,8 +2,8 @@ set bg=dark
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle', 'NERDTree'] } | Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'morhetz/gruvbox'
-Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox' " This is a theme which we can switch to
+Plug 'ayu-theme/ayu-vim' " This is a theme which I use the most often
 Plug 'neomake/neomake'
 Plug 'Raimondi/delimitMate'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'for': 'go' }
@@ -17,7 +17,7 @@ Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 let ayucolor="dark"
 
-" colorscheme ayu
+colorscheme ayu
 " colorscheme gruvbox
 noremap <C-n>t :tabnew<CR>
 noremap <C-v>sp :vsp<CR>
