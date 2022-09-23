@@ -1,0 +1,95 @@
+version: 3
+
+vars:
+  EMAIL: hi@teddy.codes
+  CASKS: |
+    visual-studio-code
+    slack
+    spotify
+    iterm2
+    docker
+    zoom
+    wireshark
+    notion
+    discord
+    font-jetbrains-mono
+  TOOLS: |
+    go
+    gh
+    golang-migrate
+    git
+    pulumi
+    zoxide
+    nvm
+    bottom
+    fzf
+    trash
+
+
+tasks:
+  setup:
+    cmds:
+      - /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      - sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+      - brew install go-task/tap/go-task
+  pack:
+    cmds:
+      - cp ~/.zshrc .zshrc
+      - cp ~/.ssh/config .ssh/config
+  unpack:
+    cmds:
+      - cp .zshrc ~/.zshrc
+      - cp .ssh/config ~/.ssh/config
+  install-casks:
+    cmds:
+      - brew install --cask {{ .CASKS | catLines }}
+  install-commands:
+    cmds:
+      - brew install {{ .TOOLS | catLines }}
+      - task: install-fzf
+      - task: alias-trash
+  install-tools:
+    preconditions:
+      - brew --version
+      - brew update && brew upgrade
+      - brew tap homebrew/cask-versions
+    cmds:
+      - task: install-casks
+      - task: install-commands
+  alias-trash:
+    status:
+      - cat ~/.zshrc | grep 'alias rm'
+    cmds:
+  install-fzf:
+    status:
+      - "[[ -f ~/.fzf.zsh ]]"
+    cmds:
+      - /opt/homebrew/opt/fzf/install --all
+  setup-ssh-keys:
+    status:
+      - "[[ -f ~/.ssh/id_ed25519 ]]"
+    cmds:
+      - ssh-keygen -t ed25519 -C "{{ .EMAIL }}"
+      - eval "$(ssh-agent -s)"
+  change-screenshot-location:
+    preconditions:
+      - [[ -f ]]
+  setup-git:
+    status:
+      - git config --global user.signingkey | grep 'ssh'
+      - git config --global user.name | grep 'Teddy'
+      - git config --global user.signingkey | grep 'ssh'
+      - git config --global init.defaultBranch | grep 'master'
+      - git config --global user.email | grep "{{ .EMAIL }}"
+    cmds:
+      - task: setup-ssh-keys
+      - git config --global user.name Teddy
+      - git config --global commit.gpgsign true
+      - git config --global tag.gpgsign true
+      - git config --global init.defaultBranch master
+      - git config --global user.email "{{ .EMAIL }}"
+      - git config --global gpg.format ssh
+      - echo "Please paste the following ssh key into your github account as both the signing and authentication keys"
+      - cat ~/.ssh/id_ed25519.pub
+      - git config --global user.signingkey "$(cat ~/.ssh/id_ed25519.pub)"
+      - ssh-add --apple-use-keychain ~/.ssh/id_ed25519
