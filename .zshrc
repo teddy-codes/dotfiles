@@ -2,68 +2,188 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export HOME="/home/$(whoami)"
 export ZSH="$HOME/.oh-my-zsh"
-export PATH="./node_modules/.bin:$PATH"
-export PATH="../node_modules/bin:$PATH"
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/go"
-export PATH="$GOPATH/bin:$GOROOT/bin:$HOME/.local:$PATH"
-export TERM=xterm-256color
-export DEFAULT_USER=robert
-export EDITOR="vim"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="blinks"
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="gnzh"
 
-# custom script files
-alias zshconfig="vim ~/.zshrc"
-alias zshrc="source ~/.zshrc"
-alias vimconfig="vim ~/.vimrc"
-alias sshconfig="vim ~/.ssh/config"
-alias gitg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-# this is literally to fix the crap syntax highlighting of vim after a certain character count due to the line above. aaaaaaaaaaa
-alias projects="~/Documents/projects"
-alias mongo:up="docker start mongo"
-alias mongo:down="docker kill mongo"
-alias v:up="amixer -D pulse sset Master 5%+"
-alias v:down="amixer -D pulse sset Master 5%-"
-alias v:off="amixer -D pulse sset Master 0%"
-# so you can set percentage directly as a CLI arg like v: 40%
-alias v:="amixer -D pulse sset Master" 
-alias gs="git status"
-alias su="scanunlimited"
-alias cat="batcat"
-alias vim="nvim"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-plugins=(
-    git
-)
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-function kt-go() {
-  export PROJECT_DIRECTORY=$1
-  kitty --session ~/.config/kitty/go.conf
-}
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
+# User configuration
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# Added by serverless binary installer
-export PATH="$HOME/.serverless/bin:$PATH"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+alias git="hub"
+alias lg="lazygit"
+alias gclean="git branch | grep -v "master" | xargs git branch -D"
+alias swagger='docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger'
+alias v="nvim"
+alias cl="clear"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+#
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH="./node_modules/.bin:$HOME/bin:/usr/local/bin:./node_modules/.bin:$HOME/.local/bin:/usr/local/opt/python@3.9/bin:$PATH"
+alias gs="git status"
+alias cat="bat"
+alias cd="z"
+alias l="ls -lah"
+alias catp="bat --style plain"
+alias rm="trash"
+alias date="gdate"
+alias zshconfig="vim ~/.zshrc"
+alias zshrc="source ~/.zshrc"
+alias sshconfig="vim ~/.ssh/config"
+alias gitg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias projects="~/projects"
+alias f="fzf"
+alias awswhoami="aws sts get-caller-identity"
+alias s='doppler run --config "term" --project "terminal"'
+
+# Ollama aliases
+alias l70="ollama run llama3.3:70b"
+alias cl70="ollama run codellama:70b"
+alias ds32="ollama run deepseek:32b"
+alias ds="ollama run deepseek-r1:8b"
+alias co="ollama run deepseek-coder-v2"
+
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+eval "$(zoxide init zsh)"
+
+# on path switch to theaterears, I want to source the helper functions.
+function chpwd() {
+    # Get the current directory path
+    local dir=$PWD
+
+    # Check if the directory contains "theaterears" (case insensitive)
+    if [[ $(echo $dir | grep -i 'theaterears') ]]; then
+        # Find the last occurrence of "theaterears" in the path, regardless of case
+        local base_path="${dir%"${dir##*theaterears}"}"
+
+        # Construct the correct source.sh path relative to where "theaterears" is found
+        local source_path="$base_path/helpers/source.sh"
+
+        # Check if the file exists and is readable
+        if [ -f "$source_path" ] && [ -r "$source_path" ]; then
+            source "$source_path"
+        else
+            echo "File $source_path does not exist or is not readable."
+        fi
+    fi
+}
+
+function cleanDocker() {
+  docker image prune -a -f
+  docker container prune -f
+  docker volume prune -f
+  docker network prune -f
+  docker system prune -a -f
+}
+
+
