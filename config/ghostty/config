@@ -1,6 +1,19 @@
-# settings
+# Window settings
+window-inherit-working-directory = true
+window-theme = dark
+
+# Mouse settings
+mouse-hide-while-typing = true
+copy-on-select = true
+
+# Background and transparency settings
+background = #282a36
 background-opacity = 0.95
+
+# Font and cursor settings
 font-family = Monaspace Krypton
-font-size = 18
+font-size = 14
+cursor-style = block
 macos-option-as-alt = true
-theme = SpaceGray
+
+theme = "Everforest Dark - Hard"
