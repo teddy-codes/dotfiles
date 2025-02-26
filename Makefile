@@ -1,7 +1,7 @@
 .PHONY: ensure-brew pack unpack pack-zshr unpack-zshrc pack-nvim unpack-nvim pack-brew unpack-brew
 
-pack: ensure-brew pack-zshr pack-nvim pack-brew
-unpack: ensure-brew unpack-zshrc unpack-nvim unpack-brew
+pack: ensure-brew pack-zshr pack-nvim pack-brew pack-ghostty
+unpack: ensure-brew unpack-zshrc unpack-nvim unpack-brew unpack-ghostty
 
 ensure-brew:
 	@command -v brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -26,3 +26,8 @@ pack-brew:
 unpack-brew:
 	brew bundle install --file=./Brewfile
 
+pack-ghostty:
+	cp ~/.config/ghostty/* ./config/ghostty/
+
+unpack-ghostty:
+	cp ./config/ghostty/* ~/.config/ghostty/

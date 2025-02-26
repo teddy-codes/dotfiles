@@ -3,6 +3,14 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        tsserver = {
+          init_options = {
+            preferences = {
+              importModuleSpecifierPreference = "relative",
+              importModuleSpecifierEnding = "minimal",
+            },
+          },
+        },
         eslint = {
           on_attach = function(_, bufnr)
             vim.api.nvim_create_autocmd("BufWritePre", {

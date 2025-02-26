@@ -56,21 +56,4 @@ return {
     event = "BufRead",
     config = true,
   },
-  { import = "lazyvim.plugins.extras.lang.typescript" },
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        tsserver = {
-          init_options = {
-            preferences = {
-              importModuleSpecifierPreference = "relative",
-              importModuleSpecifierEnding = "minimal",
-            },
-          },
-        },
-      },
-    },
-  },
-  { import = "lazyvim.plugins.extras.lang.go" },
 }
