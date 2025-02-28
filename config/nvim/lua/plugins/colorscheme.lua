@@ -80,7 +80,7 @@ return {
           -- Style for functions
           functions = { "bold" },
           -- Style for keywords
-          keywords = { "italic" },
+          keywords = {},
           -- Style for strings
           strings = {},
           -- Style for variables

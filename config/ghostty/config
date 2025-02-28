@@ -11,7 +11,7 @@ background = #282a36
 background-opacity = 0.95
 
 # Font and cursor settings
-font-family = Monaspace Krypton
+font-family = Monaspace Argon
 font-size = 14
 cursor-style = block
 macos-option-as-alt = true
