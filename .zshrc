@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:./node_modules/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -142,6 +142,9 @@ alias projects="~/projects"
 alias f="fzf"
 alias awswhoami="aws sts get-caller-identity"
 alias s='doppler run --config "term" --project "terminal"'
+alias te-wake="wakeonlan 50:91:e3:a5:b1:9f"
+alias te-vnc="ssh -L 5901:localhost:5901 te"
+alias te-vnc-start="ssh -L 5901:localhost:5901 te 'vncserver :1'"
 
 # Ollama aliases
 alias l70="ollama run llama3.3:70b"
@@ -186,4 +189,5 @@ function cleanDocker() {
   docker system prune -a -f
 }
 
+nvm use --lts
 

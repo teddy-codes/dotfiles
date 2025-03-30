@@ -7,13 +7,18 @@ mouse-hide-while-typing = true
 copy-on-select = true
 
 # Background and transparency settings
-background = #282a36
-background-opacity = 0.95
+# background = #282a36
+# background-opacity = 0.95
 
 # Font and cursor settings
-font-family = Monaspace Argon
-font-size = 14
+font-family = Monaspace Krypton
+font-size = 15
+
+# Set the line height
+adjust-cell-height = 30%
+
 cursor-style = block
 macos-option-as-alt = true
 
-theme = "Everforest Dark - Hard"
+theme = "ayu"
+# theme = "Monokai Pro"

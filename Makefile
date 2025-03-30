@@ -27,7 +27,7 @@ unpack-brew:
 	brew bundle install --file=./Brewfile
 
 pack-ghostty:
-	cp ~/.config/ghostty/* ./config/ghostty/
+	cp -r ~/.config/ghostty/* ./config/ghostty/
 
 unpack-ghostty:
 	cp ./config/ghostty/* ~/.config/ghostty/

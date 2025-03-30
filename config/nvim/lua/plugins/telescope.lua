@@ -5,6 +5,11 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     },
     opts = {
+      pickeers = {
+        find_files = {
+          hidden = true,
+        },
+      },
       defaults = {
         file_ignore_patterns = { "node_modules", ".git/", "dist/" },
         layout_strategy = "vertical",
