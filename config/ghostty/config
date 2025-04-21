@@ -12,7 +12,7 @@ copy-on-select = true
 
 # Font and cursor settings
 font-family = Monaspace Krypton
-font-size = 15
+font-size = 12
 
 # Set the line height
 adjust-cell-height = 30%

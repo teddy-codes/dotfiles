@@ -1,8 +1,9 @@
 return {
+  -- Optional: Trouble for better diagnostic views
   {
     "windwp/nvim-ts-autotag",
     config = function()
-      require("nvim-ts-autotag").setup({
+      require("nvim-ts-autotag").setup {
         autotag = {
           enable = true,
           enable_rename = true,
@@ -48,7 +49,7 @@ return {
             "menuitem",
           },
         },
-      })
+      }
     end,
   },
   {
