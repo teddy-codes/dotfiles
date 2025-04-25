@@ -1,5 +1,5 @@
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:./node_modules/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:./node_modules/bin:$HOME/go/bin/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -191,3 +191,4 @@ function cleanDocker() {
 
 nvm use --lts
 
+export GPG_TTY=$(tty)

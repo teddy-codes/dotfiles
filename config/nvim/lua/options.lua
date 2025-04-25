@@ -1,9 +1,6 @@
-require "nvchad.options"
+require("nvchad.options")
 
--- add yours here!
-
--- local o = vim.o
--- o.cursorlineopt ='both' -- to enable cursorline!
+vim.o.cursorlineopt = "both" -- to enable cursorline!
 vim.opt.relativenumber = true
 vim.opt.number = true
 vim.opt.wrap = false
@@ -23,7 +20,7 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false
 vim.opt.incsearch = true
 vim.opt.clipboard = "unnamedplus"
-vim.opt.iskeyword:append "-"
+vim.opt.iskeyword:append("-")
 vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.ignorecase = true
@@ -36,3 +33,13 @@ vim.opt.list = true
 vim.opt.listchars = { tab = "→ ", trail = "·" }
 vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
+vim.lsp.inlay_hint.enable = true

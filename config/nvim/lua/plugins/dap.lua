@@ -110,16 +110,14 @@ return {
 
       dap.adapters["node"] = dap.adapters["pwa-node"]
 
-      local Config = require("lazyvim.config")
       vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
 
-      for name, sign in pairs(Config.icons.dap) do
-        sign = type(sign) == "table" and sign or { sign }
-        vim.fn.sign_define(
-          "Dap" .. name,
-          { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
-        )
-      end
+      -- Define basic icons
+      vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "DiagnosticSignError" })
+      vim.fn.sign_define("DapBreakpointCondition", { text = "●", texthl = "DiagnosticSignWarn" })
+      vim.fn.sign_define("DapLogPoint", { text = "◆", texthl = "DiagnosticSignInfo" })
+      vim.fn.sign_define("DapStopped", { text = "▶", texthl = "DiagnosticSignHint" })
+      vim.fn.sign_define("DapBreakpointRejected", { text = "○", texthl = "DiagnosticSignError" })
 
       for _, language in ipairs(js_based_languages) do
         dap.configurations[language] = {

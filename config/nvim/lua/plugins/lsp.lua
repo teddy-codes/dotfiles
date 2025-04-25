@@ -7,7 +7,7 @@ return {
       {
         "williamboman/mason.nvim",
         config = function()
-          require("mason").setup {
+          require("mason").setup({
             ui = {
               icons = {
                 package_installed = "✓",
@@ -15,14 +15,14 @@ return {
                 package_uninstalled = "✗",
               },
             },
-          }
+          })
         end,
       },
       -- Bridge between Mason and LSP Config
       {
         "williamboman/mason-lspconfig.nvim",
         config = function()
-          require("mason-lspconfig").setup {
+          require("mason-lspconfig").setup({
             ensure_installed = {
               "vtsls", -- TypeScript language server
               "eslint", -- ESLint server
@@ -32,14 +32,14 @@ return {
               "html", -- HTML language server
             },
             automatic_installation = true,
-          }
+          })
         end,
       },
       -- Tool installer plugin
       {
         "WhoIsSethDaniel/mason-tool-installer.nvim",
         config = function()
-          require("mason-tool-installer").setup {
+          require("mason-tool-installer").setup({
             ensure_installed = {
               -- Formatters
               "prettier",
@@ -54,40 +54,70 @@ return {
             },
             auto_update = true,
             run_on_start = true,
-          }
+          })
         end,
       },
     },
     config = function()
-      local lspconfig = require "lspconfig"
+      local lspconfig = require("lspconfig")
 
       -- TypeScript configuration
-      lspconfig.vtsls.setup {
+      lspconfig.vtsls.setup({
         init_options = {
           preferences = {
             importModuleSpecifierPreference = "relative",
             importModuleSpecifierEnding = "minimal",
           },
         },
+
+        settings = {
+          typescript = {
+            inlayHints = {
+              parameterNames = { enabled = "all" },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            },
+          },
+          javascript = {
+            inlayHints = {
+              parameterNames = { enabled = "all" },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
+            },
+          },
+          vtsls = {
+            -- This setting helps prevent excessively long inlay hints
+            experimental = {
+              maxInlayHintLength = 30,
+            },
+          },
+        },
+
         on_attach = function(client, bufnr)
           -- Disable formatting for tsserver (use Prettier instead)
           client.server_capabilities.documentFormattingProvider = false
           client.server_capabilities.documentRangeFormattingProvider = false
         end,
-      }
+      })
 
       -- ESLint configuration
-      lspconfig.eslint.setup {
+      lspconfig.eslint.setup({
         on_attach = function(_, bufnr)
           vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = bufnr,
             command = "EslintFixAll",
           })
         end,
-      }
+      })
 
       -- Go language server configuration
-      lspconfig.gopls.setup {
+      lspconfig.gopls.setup({
         cmd = { "gopls" },
         settings = {
           gopls = {
@@ -97,7 +127,7 @@ return {
             staticcheck = true,
           },
         },
-      }
+      })
     end,
   },
 
@@ -111,13 +141,17 @@ return {
         -- Optional mapping to trigger format
         "<leader>cf",
         function()
-          require("conform").format { async = true, lsp_fallback = true }
+          require("conform").format({ async = true, lsp_fallback = true })
         end,
         mode = { "n", "v" },
         desc = "Format buffer",
       },
     },
     opts = {
+      icons = {
+        diagnostics = true,
+        references = true,
+      },
       formatters_by_ft = {
         javascript = { "prettier" },
         typescript = { "prettier" },
@@ -142,6 +176,21 @@ return {
         timeout_ms = 500,
         lsp_fallback = true,
       },
+    },
+  },
+  -- Trouble.nvim configuration
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "Trouble",
+    opts = {},
+    keys = {
+      { "<leader>xx", "<cmd>Trouble<cr>", desc = "Toggle Diagnostics" },
+      { "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", desc = "Document Diagnostics" },
+      { "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", desc = "Workspace Diagnostics" },
+      { "<leader>xq", "<cmd>Trouble quickfix<cr>", desc = "Quickfix List" },
+      { "<leader>xl", "<cmd>Trouble loclist<cr>", desc = "Location List" },
+      { "gR", "<cmd>Trouble lsp_references<cr>", desc = "LSP References" },
     },
   },
 }

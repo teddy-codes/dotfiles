@@ -18,7 +18,7 @@ pack-nvim:
 
 unpack-nvim:
 	mkdir -p ~/.config/nvim
-	cp -r ./config/nvim/init.vim ~/.config/nvim/
+	cp -r ./config/nvim/* ~/.config/nvim/
 
 pack-brew:
 	brew bundle dump --force --file=./Brewfile
