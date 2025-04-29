@@ -30,6 +30,16 @@ return {
               "lua_ls", -- Lua language server
               "cssls", -- CSS language server
               "html", -- HTML language server
+              "jsonls", -- JSON language
+              "bashls", -- Bash language server
+              "dockerls", -- Docker language server
+              "terraformls", -- Terraform language server
+              "pyright", -- Python language server
+              "rust_analyzer", -- Rust language server
+              "graphql", -- GraphQL language server
+              "yamlls", -- YAML language server
+              "taplo", -- TOML language server
+              "marksman", -- Markdown language server
             },
             automatic_installation = true,
           })
@@ -127,6 +137,10 @@ return {
             staticcheck = true,
           },
         },
+      })
+
+      lspconfig.terraformls.setup({
+        filetypes = { "terraform", "terraform-vars", "tf" },
       })
     end,
   },
