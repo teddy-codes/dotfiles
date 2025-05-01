@@ -6,11 +6,13 @@ unpack: ensure-brew unpack-zshrc unpack-nvim unpack-brew unpack-ghostty
 ensure-brew:
 	@command -v brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-pack-zshr:
+pack-zshrc:
 	cp ~/.zshrc .
+	cp ~/.oh-my-zsh/themes/custom.zsh-theme ohmyzsh/themes/
 
 unpack-zshrc:
 	cp ./.zshrc ~/.zshrc
+	cp ./ohmyzsh/themes/custom.zsh-theme ~/.oh-my-zsh/themes/
 
 pack-nvim:
 	mkdir -p ./config/nvim

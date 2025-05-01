@@ -1,151 +1,161 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:./node_modules/bin:$HOME/go/bin/:$PATH
-
-# Path to your oh-my-zsh installation.
+export PATH="./node_modules/.bin:$HOME/bin:/usr/local/bin:./node_modules/.bin:$HOME/.local/bin:/usr/local/opt/python@3.9/bin:$PATH"
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="gnzh"
+ZSH_THEME="custom"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(
+  git
+)
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
+# Load nvm(node version manager)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
 alias git="hub"
 alias lg="lazygit"
 alias gclean="git branch | grep -v "master" | xargs git branch -D"
-alias swagger='docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$(go env GOPATH):/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger'
 alias v="nvim"
-alias cl="clear"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-#
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-export PATH="./node_modules/.bin:$HOME/bin:/usr/local/bin:./node_modules/.bin:$HOME/.local/bin:/usr/local/opt/python@3.9/bin:$PATH"
-alias gs="git status"
 alias cat="bat"
 alias cd="z"
 alias l="ls -lah"
 alias catp="bat --style plain"
 alias rm="trash"
 alias date="gdate"
-alias zshconfig="vim ~/.zshrc"
-alias zshrc="source ~/.zshrc"
-alias sshconfig="vim ~/.ssh/config"
 alias gitg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias projects="~/projects"
 alias f="fzf"
-alias awswhoami="aws sts get-caller-identity"
-alias s='doppler run --config "term" --project "terminal"'
-alias te-wake="wakeonlan 50:91:e3:a5:b1:9f"
-alias te-vnc="ssh -L 5901:localhost:5901 te"
-alias te-vnc-start="ssh -L 5901:localhost:5901 te 'vncserver :1'"
 
+alias awswhoami="aws sts get-caller-identity"
+
+alias te-dev="doppler-te-terminal dev"
+alias te-prod="doppler-te-terminal prod"
+alias te-legacy="doppler-te-terminal legacy"
+
+function getConsoleSession() {
+  if [ -z "$DOPPLER_ENV" ]; then
+    echo "You are required to be in a doppler environment for this"
+    return 1
+  fi
+
+  # Create session JSON
+  local session="{\"sessionId\":\"$AWS_ACCESS_KEY_ID\",\"sessionKey\":\"$AWS_SECRET_ACCESS_KEY\",\"sessionToken\":\"$AWS_SESSION_TOKEN\"}"
+
+  # Get signin token from aws federation
+  local signinToken
+  signinToken=$(curl -s \
+    "https://signin.aws.amazon.com/federation" \
+    --get \
+    --data-urlencode "Action=getSigninToken" \
+    --data-urlencode "SessionDuration=3600" \
+    --data-urlencode "Session=${session}" |
+    jq -r .SigninToken)
+
+  # Why can't we get one??
+  if [ -z "$signinToken" ]; then
+    echo "Failed to get signin token"
+    return 1
+  fi
+
+  # Generate console URL with the sign in token
+  local CONSOLE_URL="https://signin.aws.amazon.com/federation?Action=login&Destination=https://console.aws.amazon.com/&SigninToken=${signinToken}"
+
+  # At this point, the user should not have to enter any console password.
+  echo "Console URL:"
+  echo "$CONSOLE_URL"
+}
+
+function doppler-te-terminal() {
+  if [ -z "$1" ]; then
+    echo "Usage: doppler-te-terminal <environment> [role] [mfa]"
+    echo "  If role is provided, MFA is required for role assumption"
+    echo "  If only MFA is provided (no role), authenticates as current user"
+    return 1
+  fi
+
+  local environment=$1
+  local role=$2
+  local mfa_code=$3
+  
+  # Check if we're doing role assumption or just MFA auth
+  if [ -n "$role" ] && [ -n "$mfa_code" ]; then
+    # Role assumption with MFA
+    doppler run --project theaterears --config $environment -- zsh -c "
+      # When this shell exits, we want to preserve history
+      setopt APPEND_HISTORY
+      export DOPPLER_ENV=\"te($role): $environment\"
+      
+      # Get account and user info
+      accountId=\$(aws sts get-caller-identity --query Account --output text)
+      username=\$(aws sts get-caller-identity --query Arn --output text | cut -d/ -f2)
+      
+      # Assume the role with MFA
+      export \$(printf \"AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s\" \$(aws sts assume-role \
+        --role-arn \"arn:aws:iam::\${accountId}:role/$role\" \
+        --serial-number \"arn:aws:iam::\${accountId}:mfa/\$username\" \
+        --token-code \"$mfa_code\" \
+        --duration-seconds 3600 \
+        --role-session-name \"\$username\" \
+        --query \"Credentials.[AccessKeyId,SecretAccessKey,SessionToken]\" \
+        --output text))
+      
+      # use the latest lts version of nvm
+      \. "$NVM_DIR/nvm.sh"
+      nvm use --lts
+
+      # Launch an interactive shell
+      exec zsh -i
+    "
+  elif [ -n "$mfa_code" ] && [ -z "$role" ]; then
+    # Just MFA auth as the current user (no role assumption)
+    doppler run --project theaterears --config $environment -- zsh -c "
+      # When this shell exits, we want to preserve history
+      setopt APPEND_HISTORY
+      export DOPPLER_ENV=\"te: $environment\"
+      
+      # Get account and user info
+      username=\$(aws sts get-caller-identity --query Arn --output text | cut -d/ -f2)
+      
+      # Get session token with MFA
+      export \$(printf \"AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s\" \$(aws sts get-session-token \
+        --serial-number \"arn:aws:iam::\$(aws sts get-caller-identity --query Account --output text):mfa/\$username\" \
+        --token-code \"$mfa_code\" \
+        --duration-seconds 3600 \
+        --query \"Credentials.[AccessKeyId,SecretAccessKey,SessionToken]\" \
+        --output text))
+
+      # use the latest lts version of nvm
+      \. "$NVM_DIR/nvm.sh"
+      nvm use --lts
+
+      # Launch an interactive shell
+      exec zsh -i
+    "
+  else
+    echo "Error: Incorrect parameter usage"
+    echo "Usage: doppler-te-terminal <environment> [role] [mfa]"
+    echo "  If role is provided, MFA is required for role assumption"
+    echo "  If only MFA is provided (no role), authenticates as current user"
+    return 1
+  fi
+}
+# alias te-wake="wakeonlan 50:91:e3:a5:b1:9f"
+# alias te-vnc="ssh -L 5901:localhost:5901 te"
+# alias te-vnc-start="ssh -L 5901:localhost:5901 te 'vncserver :1'"
+#
 # Ollama aliases
 alias l70="ollama run llama3.3:70b"
 alias cl70="ollama run codellama:70b"
@@ -159,28 +169,6 @@ export NVM_DIR="$HOME/.nvm"
 
 eval "$(zoxide init zsh)"
 
-# on path switch to theaterears, I want to source the helper functions.
-function chpwd() {
-    # Get the current directory path
-    local dir=$PWD
-
-    # Check if the directory contains "theaterears" (case insensitive)
-    if [[ $(echo $dir | grep -i 'theaterears') ]]; then
-        # Find the last occurrence of "theaterears" in the path, regardless of case
-        local base_path="${dir%"${dir##*theaterears}"}"
-
-        # Construct the correct source.sh path relative to where "theaterears" is found
-        local source_path="$base_path/helpers/source.sh"
-
-        # Check if the file exists and is readable
-        if [ -f "$source_path" ] && [ -r "$source_path" ]; then
-            source "$source_path"
-        else
-            echo "File $source_path does not exist or is not readable."
-        fi
-    fi
-}
-
 function cleanDocker() {
   docker image prune -a -f
   docker container prune -f
@@ -189,6 +177,5 @@ function cleanDocker() {
   docker system prune -a -f
 }
 
-nvm use --lts
 
 export GPG_TTY=$(tty)
