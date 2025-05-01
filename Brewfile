@@ -1,7 +1,6 @@
 tap "dopplerhq/cli"
 tap "homebrew/bundle"
 tap "homebrew/cask-fonts"
-tap "homebrew/cask-versions"
 tap "mongodb/brew"
 tap "tbckr/tap"
 brew "cryptography"
