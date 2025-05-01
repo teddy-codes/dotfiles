@@ -57,7 +57,7 @@ brew "watch"
 brew "watchman"
 brew "yq"
 brew "zoxide"
-brew "dopplerhq/cli/doppler", link: false
+brew "dopplerhq/cli/doppler"
 brew "mongodb/brew/mongodb-community"
 brew "tbckr/tap/sgpt"
 cask "arc"
