@@ -17,7 +17,7 @@ export LANG=en_US.UTF-8
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 # Load nvm(node version manager)
@@ -44,6 +44,7 @@ alias awswhoami="aws sts get-caller-identity"
 alias te-dev="doppler-te-terminal dev"
 alias te-prod="doppler-te-terminal prod"
 alias te-legacy="doppler-te-terminal legacy"
+alias gcs="getConsoleSession"
 
 function getConsoleSession() {
   if [ -z "$DOPPLER_ENV" ]; then
@@ -77,6 +78,22 @@ function getConsoleSession() {
   echo "Console URL:"
   echo "$CONSOLE_URL"
 }
+
+function auto_logout() {
+  # Set timeout to 300 seconds (5 minutes)
+  TMOUT=$1
+  
+  function TRAPALRM() {
+    echo "Session expired due to inactivity"
+    sleep 1
+    exit
+  }
+}
+
+# Call the function to enable auto-logout
+if [ -n "$DOPPLER_ENV" ]; then
+  auto_logout 3500
+fi
 
 function doppler-te-terminal() {
   if [ -z "$1" ]; then
@@ -128,10 +145,11 @@ function doppler-te-terminal() {
       
       # Get account and user info
       username=\$(aws sts get-caller-identity --query Arn --output text | cut -d/ -f2)
+      accountId=\$(aws sts get-caller-identity --query Account --output text)
       
       # Get session token with MFA
       export \$(printf \"AWS_ACCESS_KEY_ID=%s AWS_SECRET_ACCESS_KEY=%s AWS_SESSION_TOKEN=%s\" \$(aws sts get-session-token \
-        --serial-number \"arn:aws:iam::\$(aws sts get-caller-identity --query Account --output text):mfa/\$username\" \
+        --serial-number \"arn:aws:iam::\${accountId}:mfa/\$username\" \
         --token-code \"$mfa_code\" \
         --duration-seconds 3600 \
         --query \"Credentials.[AccessKeyId,SecretAccessKey,SessionToken]\" \
