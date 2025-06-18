@@ -1,24 +1,28 @@
 # Window settings
 window-inherit-working-directory = true
-window-theme = dark
+window-theme = "dark"
 
 # Mouse settings
 mouse-hide-while-typing = true
 copy-on-select = true
 
 # Background and transparency settings
-# background = #282a36
+# background = "#282a36"
 # background-opacity = 0.95
 
 # Font and cursor settings
-font-family = Monaspace Krypton
+font-family = "Monaspace Neon"
 font-size = 12
 
-# Set the line height
-adjust-cell-height = 30%
+# Set the line height (adjust cell height)
+adjust-cell-height = "40%"
 
-cursor-style = block
+# Cursor configuration
+cursor-style = "block_hollow"
+
+# macOS specific settings
 macos-option-as-alt = true
 
-theme = "ayu"
-# theme = "Monokai Pro"
+# Theme selection
+# theme = "ayu"
+theme = "Monokai Pro"

@@ -1,52 +1,66 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "loctvl842/monokai-pro.nvim",
+    lazy = false,
     priority = 1000,
-    opts = {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
-      background = { -- :h background
-        light = "latte",
-        dark = "macchiato",
-      },
-      transparent_background = false,
-      show_end_of_buffer = false,
-      integrations = {
-        aerial = true,
-        alpha = true,
-        cmp = true,
-        dashboard = true,
-        flash = true,
-        gitsigns = true,
-        headlines = true,
-        illuminate = true,
-        indent_blankline = { enabled = true },
-        leap = true,
-        lsp_trouble = true,
-        mason = true,
-        markdown = true,
-        mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
-        navic = { enabled = true, custom_bg = "NONE" },
-        neotest = true,
-        neotree = true,
-        noice = true,
-        notify = true,
-        semantic_tokens = true,
-        telescope = true,
-        treesitter = true,
-        which_key = true,
-      },
-    },
+    config = function()
+      require("monokai-pro").setup {
+        transparent_background = false,
+        terminal_colors = true,
+        devicons = true, -- highlight the icons of `nvim-web-devicons`
+        filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
+      }
+    end,
   },
+  -- {
+  --   "catppuccin/nvim",
+  --   name = "catppuccin",
+  --   priority = 1000,
+  --   opts = {
+  --     flavour = "mocha", -- latte, frappe, macchiato, mocha
+  --     background = { -- :h background
+  --       light = "latte",
+  --       dark = "macchiato",
+  --     },
+  --     transparent_background = false,
+  --     show_end_of_buffer = false,
+  --     integrations = {
+  --       aerial = true,
+  --       alpha = true,
+  --       cmp = true,
+  --       dashboard = true,
+  --       flash = true,
+  --       gitsigns = true,
+  --       headlines = true,
+  --       illuminate = true,
+  --       indent_blankline = { enabled = true },
+  --       leap = true,
+  --       lsp_trouble = true,
+  --       mason = true,
+  --       markdown = true,
+  --       mini = true,
+  --       native_lsp = {
+  --         enabled = true,
+  --         underlines = {
+  --           errors = { "undercurl" },
+  --           hints = { "undercurl" },
+  --           warnings = { "undercurl" },
+  --           information = { "undercurl" },
+  --         },
+  --       },
+  --       navic = { enabled = true, custom_bg = "NONE" },
+  --       neotest = true,
+  --       neotree = true,
+  --       noice = true,
+  --       notify = true,
+  --       semantic_tokens = true,
+  --       telescope = true,
+  --       treesitter = true,
+  --       which_key = true,
+  --     },
+  --   },
+  -- },
+  -- {
 
   -- {
   --   "neanias/everforest-nvim",
@@ -104,15 +118,15 @@ return {
   --     })
   --   end,
   -- },
-  {
-    "rebelot/kanagawa.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-    config = function()
-      -- load the colorscheme here
-      vim.cmd([[colorscheme kanagawa]])
-    end,
-  },
+  -- {
+  --   "rebelot/kanagawa.nvim",
+  --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  --   config = function()
+  --     -- load the colorscheme here
+  --     vim.cmd [[colorscheme kanagawa]]
+  --   end,
+  -- },
 
   -- Set as default colorscheme
   -- {
