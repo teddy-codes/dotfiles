@@ -30,7 +30,7 @@ vim.opt.guifont = "MonaspaceKryptonNFM:h13,JetBrainsMono Nerd Font:h13,Symbols N
 vim.g.have_nerd_font = true
 vim.g.skip_ts_context_commentstring_module = true
 vim.opt.list = true
-vim.opt.listchars = { tab = "→ ", trail = "·" }
+vim.opt.listchars = { tab = "→ ", trail = "·", eol = "↵" }
 vim.opt.colorcolumn = "80,120"
 vim.opt.showmode = false
 

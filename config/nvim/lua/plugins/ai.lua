@@ -4,7 +4,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup {
+      require("copilot").setup({
         panel = {
           enabled = true,
           auto_refresh = true,
@@ -20,7 +20,7 @@ return {
           auto_trigger = true,
           debounce = 75,
           keymap = {
-            accept = "<tab>",
+            accept = "<C-y>",
             accept_word = "<C-f>",
             next = "<C-n>",
             prev = "<C-p>",
@@ -28,8 +28,8 @@ return {
           },
         },
         filetypes = {
-          yaml = false,
-          markdown = false,
+          yaml = true,
+          markdown = true,
           help = false,
           gitcommit = false,
           gitrebase = false,
@@ -40,7 +40,7 @@ return {
         },
         copilot_node_command = "node",
         server_opts_overrides = {},
-      }
+      })
     end,
   },
 }

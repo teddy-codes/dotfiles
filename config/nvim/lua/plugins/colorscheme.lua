@@ -1,17 +1,17 @@
 return {
-  {
-    "loctvl842/monokai-pro.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("monokai-pro").setup {
-        transparent_background = false,
-        terminal_colors = true,
-        devicons = true, -- highlight the icons of `nvim-web-devicons`
-        filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
-      }
-    end,
-  },
+  -- {
+  --   "loctvl842/monokai-pro.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("monokai-pro").setup {
+  --       transparent_background = true,
+  --       terminal_colors = true,
+  --       devicons = true, -- highlight the icons of `nvim-web-devicons`
+  --       filter = "pro", -- classic | octagon | pro | machine | ristretto | spectrum
+  --     }
+  --   end,
+  -- },
   -- {
   --   "catppuccin/nvim",
   --   name = "catppuccin",

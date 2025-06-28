@@ -1,28 +1,182 @@
-# Window settings
+# Previous config
+# # Window settings
+# window-inherit-working-directory = true
+# window-theme = "dark"
+#
+# # Mouse settings
+# mouse-hide-while-typing = true
+# copy-on-select = true
+#
+# # Background and transparency settings
+# # background = "#282a36"
+# # background-opacity = 0.95
+#
+# # Font and cursor settings
+# font-family = "Monaspace Neon"
+# font-size = 12
+#
+# # Set the line height (adjust cell height)
+# adjust-cell-height = "40%"
+#
+# # Cursor configuration
+# cursor-style = "block_hollow"
+#
+# # macOS specific settings
+# macos-option-as-alt = true
+#
+# # Theme selection
+# # theme = "ayu"
+# theme = "Monokai Pro"
+# keybind = shift+enter=text:\n
+
+# Ghostty Terminal Configuration - Optimized for Performance & Modern Features
+# Save this as ~/.config/ghostty/config
+
+# =============================================================================
+# PERFORMANCE OPTIMIZATIONS
+# =============================================================================
+
+# GPU acceleration is enabled by default in Ghostty
+# gpu-acceleration = true  # Not needed - enabled by default
+
+# Optimize cell height with percentage for better font rendering
+adjust-cell-height = 40%
+
+# Enable font ligatures for better programming font experience
+font-feature = +liga,+calt,+ss01,+ss02,+ss03
+
+# =============================================================================
+# VISUAL APPEARANCE
+# =============================================================================
+
+# Modern theme - use one of these popular choices:
+theme = "Monokai Pro"
+# Alternative themes: "catppuccin-mocha", "tokyonight", "dracula", "nord", "gruvbox-dark"
+
+# Premium font with better readability
+font-family = "Monaspace Argon"
+font-size = 14
+
+# Enhance font rendering on macOS
+font-thicken = true
+font-thicken-strength = 50
+
+# Window appearance
 window-inherit-working-directory = true
 window-theme = "dark"
+background-opacity = 0.95
+background-blur = true
 
-# Mouse settings
+# Modern window styling
+window-decoration = true
+window-padding-x = 8
+window-padding-y = 8
+
+# =============================================================================
+# MOUSE & INTERACTION
+# =============================================================================
+
 mouse-hide-while-typing = true
 copy-on-select = true
 
-# Background and transparency settings
-# background = "#282a36"
-# background-opacity = 0.95
+# Enable mouse reporting for better terminal app support
+mouse-shift-capture = true
 
-# Font and cursor settings
-font-family = "Monaspace Neon"
-font-size = 12
+# =============================================================================
+# CURSOR SETTINGS
+# =============================================================================
 
-# Set the line height (adjust cell height)
-adjust-cell-height = "40%"
-
-# Cursor configuration
 cursor-style = "block_hollow"
+cursor-style-blink = false
+cursor-text = "000000"
 
-# macOS specific settings
+# =============================================================================
+# KEYBOARD & INPUT
+# =============================================================================
+
+# macOS specific optimizations
 macos-option-as-alt = true
 
-# Theme selection
-# theme = "ayu"
-theme = "Monokai Pro"
+# Modern keybindings
+keybind = shift+enter=text:\n
+keybind = cmd+d=new_split:right
+keybind = cmd+shift+d=new_split:down
+keybind = cmd+w=close_surface
+keybind = cmd+t=new_tab
+keybind = cmd+1=goto_tab:1
+keybind = cmd+2=goto_tab:2
+keybind = cmd+3=goto_tab:3
+keybind = cmd+4=goto_tab:4
+keybind = cmd+5=goto_tab:5
+keybind = cmd+6=goto_tab:6
+keybind = cmd+7=goto_tab:7
+keybind = cmd+8=goto_tab:8
+keybind = cmd+9=goto_tab:9
+keybind = cmd+0=goto_tab:10
+
+# =============================================================================
+# ADVANCED FEATURES
+# =============================================================================
+
+# Enable Quick Terminal (macOS only) - requires accessibility permissions
+# macos-titlebar-style = "hidden"
+# quick-terminal = true  # Removed - not a valid config option
+# quick-terminal-position = "bottom"  # Removed - not a valid config option  
+# quick-terminal-screen = "main"  # Removed - not a valid config option
+# quick-terminal-animation-duration = 200  # Removed - not a valid config option
+
+# Terminal behavior improvements
+scrollback-limit = 100000
+confirm-close-surface = false
+
+# Shell integration
+shell-integration = "zsh"
+shell-integration-features = "cursor,sudo,title"
+
+# =============================================================================
+# TAB & WINDOW MANAGEMENT
+# =============================================================================
+
+# Window sizing
+window-height = 35
+window-width = 120
+
+# Tab appearance
+# tab-width = 200  # Removed - not a valid config option
+window-new-tab-position = "current"
+
+# =============================================================================
+# DEVELOPMENT FEATURES
+# =============================================================================
+
+# Enable terminal inspector for debugging
+# inspector = false  # Removed - not a valid config option
+
+# Working directory settings
+working-directory = "home"
+
+# =============================================================================
+# UNICODE & ENCODING
+# =============================================================================
+
+# Method for calculating grapheme cluster width
+# Options: unicode (default), legacy
+grapheme-width-method = unicode
+
+# =============================================================================
+# OPTIMIZATION NOTES
+# =============================================================================
+
+# For maximum performance:
+# 1. Keep scrollback-limit reasonable (100k is usually enough)
+# 2. Use GPU acceleration
+# 3. Consider disabling background-blur if you experience slowdowns
+# 4. font-thicken works best on macOS with high-DPI displays
+
+# For better development experience:
+# 1. Enable shell integration for better prompt handling
+# 2. Use ligature-enabled fonts like Monaspace Neon, Fira Code, or JetBrains Mono
+# 3. Set up proper keybindings for splitting and tab management
+
+# To list all available themes: ghostty +list-themes
+# To validate config: ghostty +show-config --docs
