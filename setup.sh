@@ -22,7 +22,8 @@ sudo apt-get install -y \
     jq \
     unzip
 
-curl -sS https://starship.rs/install.sh | sh
+echo "⭐ Installing Starship prompt..."
+curl -sS https://starship.rs/install.sh | sh -s -- --yes
 
 # I use ghostty, so the term value is not standard. Need to standardize it.
 export TERM=xterm-256color
