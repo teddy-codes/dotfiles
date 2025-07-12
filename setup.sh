@@ -19,10 +19,13 @@ sudo apt-get install -y \
     curl \
     wget \
     git \
-    vim \
+    neovim \
     zsh \
     tree \
     jq \
     unzip
+
+# I use ghostty, so the term value is not standard. Need to standardize it.
+export TERM=xterm-256color
 
 echo "✅ Dotfiles setup complete!"
