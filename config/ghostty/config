@@ -50,16 +50,12 @@ font-feature = +liga,+calt,+ss01,+ss02,+ss03
 # =============================================================================
 
 # Modern theme - use one of these popular choices:
-theme = "Monokai Pro"
+theme = "catppuccin-mocha"
 # Alternative themes: "catppuccin-mocha", "tokyonight", "dracula", "nord", "gruvbox-dark"
 
 # Premium font with better readability
 font-family = "Monaspace Argon"
 font-size = 14
-
-# Enhance font rendering on macOS
-font-thicken = true
-font-thicken-strength = 50
 
 # Window appearance
 window-inherit-working-directory = true
