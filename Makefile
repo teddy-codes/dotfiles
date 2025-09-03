@@ -1,18 +1,23 @@
 .PHONY: ensure-brew pack unpack pack-zshr unpack-zshrc pack-nvim unpack-nvim pack-brew unpack-brew
 
-pack: ensure-brew pack-zshr pack-nvim pack-brew pack-ghostty
-unpack: ensure-brew unpack-zshrc unpack-nvim unpack-brew unpack-ghostty
+pack: ensure-brew pack-zshr pack-nvim pack-brew pack-alacritty
+unpack: ensure-brew unpack-zshrc unpack-nvim unpack-brew unpack-alacritty
 
 ensure-brew:
 	@command -v brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 pack-zshrc:
 	cp ~/.zshrc .
-	cp ~/.oh-my-zsh/themes/custom.zsh-theme ohmyzsh/themes/
 
 unpack-zshrc:
 	cp ./.zshrc ~/.zshrc
-	cp ./ohmyzsh/themes/custom.zsh-theme ~/.oh-my-zsh/themes/
+
+pack-alacritty:
+	mkdir -p ./config/alacritty
+	cp -r ~/.config/alacritty/* config/alacritty/
+
+unpack-alacritty:
+	cp -r ./config/alacritty ~/.config/alacritty/
 
 pack-nvim:
 	mkdir -p ./config/nvim
@@ -28,8 +33,3 @@ pack-brew:
 unpack-brew:
 	brew bundle install --file=./Brewfile
 
-pack-ghostty:
-	cp -r ~/.config/ghostty/* ./config/ghostty/
-
-unpack-ghostty:
-	cp -r ./config/ghostty/* ~/.config/ghostty/
