@@ -1,0 +1,126 @@
+[env]
+# Terminal type - helps with compatibility
+TERM = "xterm-256color"
+
+[window]
+# Window appearance
+opacity = 0.7              # Slight transparency for modern look
+blur = true                # Blur background (works on some compositors)
+decorations = "buttonless" # Clean look without title bar buttons (macOS)
+# decorations = "none"      # Uncomment for completely borderless (Linux/Windows)
+
+# Window padding - space around terminal content
+padding.x = 10
+padding.y = 10
+dynamic_padding = false
+
+# Window dimensions (optional - leave commented to use window manager defaults)
+# dimensions.columns = 120
+# dimensions.lines = 40
+
+# macOS specific - makes Option key work as Alt
+option_as_alt = "both"
+
+[scrolling]
+# Scrollback buffer
+history = 10000
+multiplier = 3
+
+[font]
+# Primary font configuration
+# Popular choices: "JetBrains Mono", "Fira Code", "Hack", "Source Code Pro"
+# For Nerd Font support, add "Nerd Font" or "Nerd Font Mono" to the name
+normal.family = "JetBrainsMono Nerd Font"
+normal.style = "Regular"
+
+bold.family = "JetBrainsMono Nerd Font"
+bold.style = "Bold"
+
+italic.family = "JetBrainsMono Nerd Font"
+italic.style = "Italic"
+
+bold_italic.family = "JetBrainsMono Nerd Font"
+bold_italic.style = "Bold Italic"
+
+# Font size - adjust based on your screen and preferences
+size = 12.0
+
+# Font offset for fine-tuning positioning
+offset.x = 0
+offset.y = 1
+
+[colors]
+# Color scheme: Modern dark theme (inspired by popular themes)
+[colors.primary]
+background = "#1e1e2e" # Deep dark background
+foreground = "#cdd6f4" # Light text
+
+[colors.cursor]
+text = "#1e1e2e"
+cursor = "#f5e0dc"
+
+[colors.vi_mode_cursor]
+text = "#1e1e2e"
+cursor = "#b4befe"
+
+[colors.selection]
+text = "#1e1e2e"
+background = "#f5e0dc"
+
+[colors.normal]
+black = "#45475a"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#bac2de"
+
+[colors.bright]
+black = "#585b70"
+red = "#f38ba8"
+green = "#a6e3a1"
+yellow = "#f9e2af"
+blue = "#89b4fa"
+magenta = "#f5c2e7"
+cyan = "#94e2d5"
+white = "#a6adc8"
+
+[cursor]
+# Cursor appearance
+style.shape = "block"   # Options: "block", "underline", "beam"
+style.blinking = "off"  # Options: "never", "off", "on", "always"
+blink_interval = 750
+unfocused_hollow = true
+
+[terminal]
+# Shell program (optional - leave commented to use system default)
+# shell.program = "/bin/zsh"
+# shell.args = ["-l"]
+
+[selection]
+# Text selection behavior
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\\t"
+save_to_clipboard = true
+
+[mouse]
+# Mouse bindings and behavior
+hide_when_typing = false
+
+# Hints for URLs and file paths
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+binding = { key = "u", mods = "shift|control" }
+regex = "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+
+[debug]
+# Debug options - usually keep these off
+render_timer = false
+persistent_logging = false
+log_level = "warn"
+print_events = false
